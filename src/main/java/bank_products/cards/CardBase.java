@@ -9,7 +9,15 @@ public abstract class CardBase extends BankProductBase {
         super(manyCode);
     }
 
-    public void minusBalance(BigDecimal sum) {
-        setBalance(getBalance().subtract(sum));
+    /**
+     * Списание - уменьшает баланс
+     * @param sum - сумма списания
+     */
+    public void payment(BigDecimal sum) {
+        if (getBalance().compareTo(sum) < 0) {
+            throw new IllegalArgumentException("Недостаточно средств");
+        } else {
+            setBalance(getBalance().subtract(sum));
+        }
     }
 }

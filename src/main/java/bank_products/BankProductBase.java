@@ -5,14 +5,11 @@ import java.math.BigDecimal;
 public class BankProductBase {
     private String name;
     private BigDecimal balance;
-    private final int	manyCode;
+    private final int moneyCode;
 
-    public BankProductBase(int manyCode) {
-        this.manyCode = manyCode;
+    public BankProductBase(int moneyCode) {
+        this.moneyCode = moneyCode;
         this.balance = BigDecimal.valueOf(0.0);
-    }
-    public void add(BigDecimal sum) {
-        this.balance = this.balance.add(sum);
     }
 
     public String getName() {
@@ -23,15 +20,19 @@ public class BankProductBase {
         return this.balance;
     }
 
-    public int getManyCode() {
-        return this.manyCode;
+    public int getMoneyCode() {
+        return this.moneyCode;
     }
 
-    protected void setBalance(BigDecimal sum) {
-        this.balance = sum;
+    public void addBalance(BigDecimal sum) {
+        this.balance = this.balance.add(sum);
     }
 
     protected void setName(String name) {
         this.name = name;
+    }
+
+    protected void setBalance(BigDecimal newBalance) {
+        this.balance = newBalance;
     }
 }
